@@ -1,8 +1,9 @@
 import telebot
 import sqlite3
 from telebot.types import ReplyKeyboardMarkup, KeyboardButton
+import os
 
-bot = telebot.TeleBot("8421288956:AAHBYP4bwtMVRMpM_5widtrwzW8PTwXt4sY")
+bot = telebot.TeleBot(os.getenv("BOT_TOKEN"))
 userproducts = {}
 
 def createDb():
@@ -92,6 +93,7 @@ def name(message):
     bot.send_message(message.chat.id, "Товар удалён")
     bdd.commit()
     bdd.close()
+
 
 
 bot.polling(non_stop=True)
